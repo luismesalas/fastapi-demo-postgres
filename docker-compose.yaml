@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: "postgres:11.13"
+    environment:
+      POSTGRES_DB: "fast-api-demo"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      PG_USER: "postgres"
+      PG_PASS: "postgres"
+      PG_HOST: "postgres"
+      PG_PORT: 5432
+      PG_DB: "fast-api-demo"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
