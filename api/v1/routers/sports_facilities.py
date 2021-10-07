@@ -42,17 +42,9 @@ def list_sports_facilities_by_postal_code(postal_code: int):
         return sport_facilities_records
 
 
-@router.get("/list-by-postal-code")
-def list_sports_facilities_by_postal_code(postal_code: int):
-    with Session(DBEngine().get_db_engine()) as session:
-        statement = select(Sports_Facilities).where(Sports_Facilities.postal_code == postal_code)
-        sport_facilities_records = session.exec(statement).all()
-        return sport_facilities_records
-
-
 # Order matters. This method should be at the end of the router for avoiding to override sub-path methods
 @router.get("/{id}")
-def read_item(id: int):
+def get_details_of_sport_facility(id: int):
     with Session(DBEngine().get_db_engine()) as session:
         statement = select(Sports_Facilities).where(Sports_Facilities.id == id)
         cross_selling_record = session.exec(statement).first()
