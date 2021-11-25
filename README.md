@@ -1,4 +1,4 @@
-# FastAPI Demo
+# FastAPI Demo - Postgres
 
 A simple project to show a couple examples of defining an API using [Tiangolo's FastAPI](https://fastapi.tiangolo.com/)
 that connects to a PostgreSQL DB using  [Tiangolo's SQLModel](https://sqlmodel.tiangolo.com/).
